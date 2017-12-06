@@ -1,0 +1,4 @@
+<resources>
+	<string name="app_name">SampleApplication</string>
+	<string name="the_item_to_add">The item to add</string>
+</resources>
