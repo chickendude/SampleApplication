@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +27,14 @@ public class MainActivity extends AppCompatActivity {
 		EditText editText = findViewById(R.id.editText);
 		Button button = findViewById(R.id.submitButton);
 		button.setOnClickListener(v -> {
-			items.add(editText.getText().toString());
-			editText.setText("");
-			adapter.notifyItemInserted(items.size()-1);
+			String itemName = editText.getText().toString();
+			if (!itemName.isEmpty()) {
+				items.add(editText.getText().toString());
+				editText.setText("");
+				adapter.notifyItemInserted(items.size() - 1);
+			} else {
+				Toast.makeText(this, "Item name must not be empty!", Toast.LENGTH_SHORT).show();
+			}
 		});
 		// recycler view
 		RecyclerView recyclerView = findViewById(R.id.recyclerView);
